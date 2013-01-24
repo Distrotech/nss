@@ -38,3 +38,9 @@ libs:
 
 dummy: all export libs
 
+clobber: clean
+
+clean:
+	rm nss-config nss.pc || true
+
+install::

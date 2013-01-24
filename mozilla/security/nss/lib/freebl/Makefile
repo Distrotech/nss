@@ -191,12 +191,16 @@ ifeq ($(CPU_ARCH),x86_64)
     MPI_SRCS += mpi_amd64.c mp_comba.c
 endif
 ifeq ($(CPU_ARCH),x86)
-    ASFILES  = mpi_x86.s
-    DEFINES += -DMP_ASSEMBLY_MULTIPLY -DMP_ASSEMBLY_SQUARE 
-    DEFINES += -DMP_ASSEMBLY_DIV_2DX1D
-    DEFINES += -DMP_CHAR_STORE_SLOW -DMP_IS_LITTLE_ENDIAN
-    # The floating point ECC code doesn't work on Linux x86 (bug 311432).
-    #ECL_USE_FP = 1
+    ifeq ($(USE_x32),1)
+        DEFINES += -DMP_CHAR_STORE_SLOW -DMP_IS_LITTLE_ENDIAN
+    else
+        ASFILES = mpi_x86.s
+        DEFINES += -DMP_ASSEMBLY_MULTIPLY -DMP_ASSEMBLY_SQUARE
+        DEFINES += -DMP_ASSEMBLY_DIV_2DX1D
+        # The floating point ECC code doesn't work on Linux x86 (bug 311432).
+        #ECL_USE_FP = 1
+        DEFINES += -DMP_CHAR_STORE_SLOW -DMP_IS_LITTLE_ENDIAN
+    endif
 endif
 ifeq ($(CPU_ARCH),arm)
     DEFINES += -DMP_ASSEMBLY_MULTIPLY -DMP_ASSEMBLY_SQUARE 

@@ -46,7 +46,7 @@ include $(CORE_DEPTH)/coreconf/rules.mk
 
 nss_build_all: build_coreconf build_dbm all
 
-nss_clean_all: clobber_coreconf clobber_nspr clobber_dbm clobber
+nss_clean_all: clobber_coreconf clobber_dbm clobber
 
 build_coreconf:
 	$(MAKE) -C $(CORE_DEPTH)/coreconf
@@ -178,3 +178,14 @@ endif
 	echo 'echo -n "number of FAILED tests: "; grep -cw FAILED logfile;'  >> $(DIST)/../../runtests.sh
 	rm -f $(TESTPACKAGE)
 	(cd $(DIST)/../.. ; tar czhf dist/$(TESTPACKAGE) runtests.sh dist/$(OBJDIR_NAME) dist/public security/nss/tests security/nss/cmd/bltest/tests; echo "created "`pwd`"/dist/$(TESTPACKAGE)")
+
+install::
+	install -d $(DESTDIR)$(PREFIX)/bin/ $(DESTDIR)$(PREFIX)/$(LIBDIR)/pkgconfig $(DESTDIR)$(PREFIX)/include/nss
+	install -m755 -D ../../dist/$(OBJDIR_NAME)/lib/*.so $(DESTDIR)$(PREFIX)/$(LIBDIR)
+	install -m644 -D ../../dist/$(OBJDIR_NAME)/lib/{*.chk,*.a} $(DESTDIR)$(PREFIX)/$(LIBDIR)
+	install -m644 -D ../../dist/$(OBJDIR_NAME)/lib/{*.chk,*.a} $(DESTDIR)$(PREFIX)/$(LIBDIR)
+	install -m644 -D ../../dist/$(OBJDIR_NAME)/lib/pkgconfig/nss.pc $(DESTDIR)$(PREFIX)/$(LIBDIR)/pkgconfig/
+	install -m755 -D ../../dist/$(OBJDIR_NAME)/bin/* $(DESTDIR)$(PREFIX)/bin/
+	install -m644 -D ../../dist/*/nss/* $(DESTDIR)$(PREFIX)/include/nss/
+
+distclean: nss_clean_all
