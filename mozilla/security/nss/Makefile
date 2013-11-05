@@ -180,7 +180,7 @@ endif
 	(cd $(DIST)/../.. ; tar czhf dist/$(TESTPACKAGE) runtests.sh dist/$(OBJDIR_NAME) dist/public security/nss/tests security/nss/cmd/bltest/tests; echo "created "`pwd`"/dist/$(TESTPACKAGE)")
 
 install::
-	install -d $(DESTDIR)$(PREFIX)/bin/ $(DESTDIR)$(PREFIX)/$(LIBDIR)/pkgconfig $(DESTDIR)$(PREFIX)/include/nss
+	install -d $(DESTDIR)$(PREFIX)/bin/ $(DESTDIR)$(PREFIX)/$(LIBDIR)/pkgconfig $(DESTDIR)$(PREFIX)/include/nss $(DESTDIR)$(PREFIX)/$(LIBDIR)/nss
 	install -m755 -D ../../dist/$(OBJDIR_NAME)/lib/*.so $(DESTDIR)$(PREFIX)/$(LIBDIR)
 	install -m644 -D ../../dist/$(OBJDIR_NAME)/lib/{*.chk,*.a} $(DESTDIR)$(PREFIX)/$(LIBDIR)/nss
 	install -m644 -D ../../dist/$(OBJDIR_NAME)/lib/pkgconfig/nss.pc $(DESTDIR)$(PREFIX)/$(LIBDIR)/pkgconfig/
