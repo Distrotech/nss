@@ -5,6 +5,10 @@
 CORE_DEPTH = ../..
 DEPTH      = ../..
 
+ifneq ($(CPU_ARCH),ppc)
+	BUILD_FREEBL=freebl
+endif
+
 #
 # organized by DLL
 #
@@ -16,7 +20,7 @@ DEPTH      = ../..
 #  smime
 #  ckfw (builtins module)
 #  crmf jar (not dll's)
-DIRS =  util freebl $(SQLITE_SRCDIR) softoken \
+DIRS =  util $(BUILD_FREEBL) $(SQLITE_SRCDIR) softoken \
 	base dev pki \
 	libpkix \
 	certdb certhigh pk11wrap cryptohi nss \
