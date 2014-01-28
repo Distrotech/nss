@@ -186,5 +186,6 @@ install::
 	install -m644 -D ../../dist/$(OBJDIR_NAME)/lib/pkgconfig/nss.pc $(DESTDIR)$(PREFIX)/$(LIBDIR)/pkgconfig/
 	install -m755 -D ../../dist/$(OBJDIR_NAME)/bin/* $(DESTDIR)$(PREFIX)/bin/
 	install -m644 -D ../../dist/*/nss/* $(DESTDIR)$(PREFIX)/include/nss/
+	sed -i -e "s/\(^#\!\/usr\/\)local\/\(bin\/perl\)/\1\2/" $(DESTDIR)$(PREFIX)/bin/smime
 
 distclean: nss_clean_all
