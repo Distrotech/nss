@@ -5,6 +5,10 @@
 CORE_DEPTH = ..
 DEPTH      = ..
 
+ifneq ($(CPU_ARCH),ppc)
+	BUILD_FREEBL=$(FREEBL_SRCDIR)
+endif
+
 #
 # organized by DLL
 #
@@ -18,7 +22,7 @@ DEPTH      = ..
 #  crmf jar (not dll's)
 DIRS = \
 	$(UTIL_SRCDIR) \
-	$(FREEBL_SRCDIR) \
+	$(BUILD_FREEBL) \
 	$(SQLITE_SRCDIR) \
 	$(DBM_SRCDIR) \
 	$(SOFTOKEN_SRCDIR) \
