@@ -1,5 +1,5 @@
-CORE_DEPTH = ../..
-DEPTH      = ../..
+CORE_DEPTH = ../
+DEPTH      = ../
 
 include $(CORE_DEPTH)/coreconf/config.mk
 
