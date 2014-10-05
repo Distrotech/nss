@@ -259,9 +259,9 @@ $(LIBRARY): $(OBJS)
 	@$(MAKE_OBJDIR)
 	rm -f $@
 ifeq (,$(filter-out _WIN%,$(NS_USE_GCC)_$(OS_TARGET)))
-	$(AR) $(subst /,\\,$(OBJS))
+	$(AR) $@ $(subst /,\\,$(OBJS))
 else
-	$(AR) $(OBJS)
+	$(AR) $@ $(OBJS)
 endif
 	$(RANLIB) $@
 
