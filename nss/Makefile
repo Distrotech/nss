@@ -128,11 +128,11 @@ package:
 
 install::
 	install -d $(DESTDIR)$(PREFIX)/bin/ $(DESTDIR)$(PREFIX)/$(LIBDIR)/pkgconfig $(DESTDIR)$(PREFIX)/include/nss $(DESTDIR)$(PREFIX)/$(LIBDIR)/nss
-	install -m755 -D ../../dist/$(OBJDIR_NAME)/lib/*.so $(DESTDIR)$(PREFIX)/$(LIBDIR)
-	install -m644 -D ../../dist/$(OBJDIR_NAME)/lib/{*.chk,*.a} $(DESTDIR)$(PREFIX)/$(LIBDIR)/nss
-	install -m644 -D ../../dist/$(OBJDIR_NAME)/lib/pkgconfig/nss.pc $(DESTDIR)$(PREFIX)/$(LIBDIR)/pkgconfig/
-	install -m755 -D ../../dist/$(OBJDIR_NAME)/bin/* $(DESTDIR)$(PREFIX)/bin/
-	install -m644 -D ../../dist/*/nss/* $(DESTDIR)$(PREFIX)/include/nss/
+	install -m755 -D ../dist/$(OBJDIR_NAME)/lib/*.so $(DESTDIR)$(PREFIX)/$(LIBDIR)
+	install -m644 -D ../dist/$(OBJDIR_NAME)/lib/{*.chk,*.a} $(DESTDIR)$(PREFIX)/$(LIBDIR)/nss
+	install -m644 -D ../dist/$(OBJDIR_NAME)/lib/pkgconfig/nss.pc $(DESTDIR)$(PREFIX)/$(LIBDIR)/pkgconfig/
+	install -m755 -D ../dist/$(OBJDIR_NAME)/bin/* $(DESTDIR)$(PREFIX)/bin/
+	install -m644 -D ../dist/*/nss/* $(DESTDIR)$(PREFIX)/include/nss/
 	sed -i -e "s/\(^#\!\/usr\/\)local\/\(bin\/perl\)/\1\2/" $(DESTDIR)$(PREFIX)/bin/smime
 
 distclean: nss_clean_all

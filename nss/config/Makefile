@@ -22,7 +22,7 @@ export:
 	    -e "s,@NSS_PATCH_VERSION@,$(NSS_PATCH_VERSION)," \
 	    nss.pc.in > nss.pc
 	chmod 0644 nss.pc
-	ln -sf ../../../../security/nss/config/nss.pc $(DIST)/lib/pkgconfig
+	cp nss.pc $(DIST)/lib/pkgconfig
 
 	# Create the nss-config script
 	mkdir -p $(DIST)/bin
@@ -32,7 +32,7 @@ export:
 	    -e "s,@NSS_PATCH_VERSION@,$(NSS_PATCH_VERSION)," \
 	    nss-config.in > nss-config
 	chmod 0755 nss-config
-	ln -sf ../../../security/nss/config/nss-config $(DIST)/bin
+	cp nss-config $(DIST)/bin
 
 libs:
 
